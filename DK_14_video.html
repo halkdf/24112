@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- source -->
+    <!-- controls - 비디오 관련된 재생,멈춤,음성 등 조정을 위한 UI가 제공 -->
+    <!-- autoplay - 자동실행 -->
+    <!-- muted - 음성 소거 -->
+    <!-- loop - 영상이 끝에 가면 처음부터 살행 -->
+    <!-- poster - 영상 실행전 보이는 썸네일 이미지지-->
+    <video src="./media/268528_tiny.mp4" 
+    poster="./img/0523.png" 
+    width="320px" 
+    controls 
+    autoplay 
+    muted
+    loop
+    ></video>
+    <br>
+    <video src="./media/268528_tiny.mp4" width="320px" controls>
+        <track 
+        src="./media/0523.en.vit" 
+        kind="subtitles" 
+        srclang="en" 
+        label="영어(English)"
+        ></track>
+        <track
+        src="./media/0523.ko.vit"
+        kind="subtitles"
+        srclang="ko"
+        label="한국어(Korean)"
+        ></track>
+    </video>
+</body>
+</html>
