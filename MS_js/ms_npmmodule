@@ -1,0 +1,20 @@
+{
+  "name": "lecture-review",
+  "version": "1.0.0",
+  "description": "server side js tutorials",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "express": "^5.1.0",
+    "jade": "^1.11.0",
+    "underscore": "^1.13.7"
+  }
+}
+
+
+
