@@ -1,0 +1,102 @@
+var express = require('express');
+var bodyParser = require('body-parser');
+var fs = require('fs');
+var app = express();
+var path = require('path');
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.locals.pretty = true;
+app.set('views', './views_file');
+app.set('view engine', 'pug');
+
+app.get('/', function(req, res){
+  res.send('Hello! This is the root page.');
+});
+
+
+
+
+// 정적 파일(css/img/html) 사용 가능하도록 설정
+app.use(express.static('public'));
+
+app.get('/login', function(req, res) {
+  res.sendFile(path.join(__dirname, 'public', 'login.html'));
+});
+
+// /topic/new 라우트를 /topic/:id 보다 위에 둬야 충돌 안 남
+app.get('/topic/new', function(req, res){
+    console.log('>>> /topic/new 라우트 호출됨');
+    fs.readdir('data', function(err, files){
+        if(err){
+            console.log('data 폴더 읽기 실패:', err);
+            return res.status(500).send('Internal Server Error');
+        }
+        console.log('data 폴더 내용:', files);
+        res.render('new', {topics: files});
+    });
+});
+
+// GET /topic → 정적 HTML 페이지 보여줌
+app.get('/topic', function(req, res){
+    res.sendFile(path.join(__dirname, 'public', 'topic.html'));
+});
+
+
+// 기존 /topic/:id는 유지 (위치 중요!지
+app.get('/topic/:id', function(req, res){
+    console.log('>>> /topic/:id 라우트 호출됨, id =', req.params.id);
+    fs.readdir('data', 'utf8', function(err, files){
+        if (err) {
+            console.log('data 폴더 읽기 실패:', err);
+            return res.status(500).send('Internal Server Error');
+        }
+        var id = req.params.id;
+        fs.readFile('data/' + id, 'utf8', function(err, data){
+            if (err) {
+                console.log('data 파일 읽기 실패:', err);
+                return res.status(500).send('Internal Server Error');
+            }
+            res.render('view', { topics: files, title: id, description: data });
+        });
+    });
+});
+
+app.post('/topic', function(req, res){
+    var title = req.body.title;
+    var description = req.body.description;
+    fs.writeFile('data/' + title, description, function(err){
+        if (err) {
+            console.log('파일 쓰기 실패:', err);
+            return res.status(500).send('Internal Server Error');
+        }
+        res.redirect('/topic/' + encodeURIComponent(title));
+    });
+});
+
+
+
+app.get('/ask', function(req, res){
+    res.sendFile(path.join(__dirname, 'public', '문의페이지.html'));
+});
+
+app.post('/ask', function(req, res){
+    var title = req.body.title;
+    var description = req.body.description;
+    fs.writeFile('data/' + title, description, function(err){
+        if (err) {
+            console.log('파일 쓰기 실패:', err);
+            return res.status(500).send('Internal Server Error');
+        }
+        res.redirect('/topic/' + encodeURIComponent(title));
+    });
+});
+
+
+app.listen(3000, '0.0.0.0', function(){
+    console.log('Connected, 3000 port!');
+});
+
+
+
+
+
