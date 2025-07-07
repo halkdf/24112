@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alyssum - 문의 사항</title>
+    <link rel="stylesheet" href="./css/font.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        margin: 0;
+        background-color: #ffffff;
+        color: #333;
+      }
+      header {
+      background-color: #a7cba9;
+      color: w;
+      padding: 20px;
+      text-align: center;
+      font-size: 24px;
+    }
+
+      footer {
+        background-color: #a7cba9;
+        padding: 25px 0;
+        text-align: center;
+        font-weight: bold;
+      }
+
+
+      .main-content {
+        text-align: center;
+        padding: 60px 20px;
+      }
+
+      .main-content h1 {
+        font-size: 40px;
+        margin-bottom: 20px;
+      }
+
+      .main-content p {
+        font-size: 25px;
+        color: #555;
+        margin-bottom: 40px;
+      }
+
+      .team-container {
+        display: flex;
+        justify-content: center;
+        gap: 100px;
+        font-size: 16px;
+      }
+
+      .team {
+        text-align: left;
+      }
+
+      .team h3 {
+        font-size: 25px;
+        margin-bottom: 10px;
+      }
+
+      .team ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .team li {
+        margin-bottom: 20px;
+      }
+
+      .email {
+        font-size: 20px;
+        color: #666;
+      }
+
+      footer {
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+     <!-- Header -->
+     <header class="bg-[#a7cba9]  top-0 z-10">
+      <div class="max-w-7xl mx-auto grid grid-cols-3 items-center px-0 py-0.25">
+        <!-- Left: Hamburger Menu -->
+        <div class="flex items-center">
+          <button class="text-white focus:outline-none" aria-label="메뉴">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+        </div>
+        <!-- Center: Logo -->
+        <div class="flex justify-center">
+          <span class="text-2xl font-bold tracking-wide text-white select-none">Alyysum</span>
+        </div>
+     </header>
+
+    <section class="p-20 flex flex-col items-center">
+    <div class="main-content">
+      <h1>문의 사항</h1>
+      <p>문의 사항은 아래 E-mail 로 보내주세요</p>
+
+      <div class="team-container">
+        <div class="team">
+          <h3>프론트엔드 팀</h3>
+          <ul>
+            <li>
+              <strong>김도언</strong><br /><span class="email"
+                >2411203@angok.hs.kr</span
+              >
+            </li>
+            <li>
+              <strong>류다경</strong><br /><span class="email">2411218@angok.hs.kr</span>
+            </li>
+          </ul>
+        </div>
+        <div class="team">
+          <h3>백엔드 팀</h3>
+          <ul>
+            <li>
+              <strong>조민서</strong><br /><span class="email">2411223@angok.hs.kr</span>
+            </li>
+            <li>
+              <strong>임준형</strong><br /><span class="email"
+                >2411212@angok.hs.kr</span
+              >
+            </li>
+            <li>
+              <strong>이기현</strong><br /><span class="email">2411207@angok.hs.kr</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section >
+    <footer>24112 Web Development Project</footer>
+  </body>
+</html>
