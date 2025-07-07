@@ -16,14 +16,12 @@ app.get('/', function(req, res){
 
 
 
-// 정적 파일(css/img/html) 사용 가능하도록 설정
 app.use(express.static('public'));
 
 app.get('/login', function(req, res) {
   res.sendFile(path.join(__dirname, 'public', 'login.html'));
 });
 
-// /topic/new 라우트를 /topic/:id 보다 위에 둬야 충돌 안 남
 app.get('/topic/new', function(req, res){
     console.log('>>> /topic/new 라우트 호출됨');
     fs.readdir('data', function(err, files){
@@ -36,13 +34,11 @@ app.get('/topic/new', function(req, res){
     });
 });
 
-// GET /topic → 정적 HTML 페이지 보여줌
 app.get('/topic', function(req, res){
     res.sendFile(path.join(__dirname, 'public', 'topic.html'));
 });
 
 
-// 기존 /topic/:id는 유지 (위치 중요!지
 app.get('/topic/:id', function(req, res){
     console.log('>>> /topic/:id 라우트 호출됨, id =', req.params.id);
     fs.readdir('data', 'utf8', function(err, files){
